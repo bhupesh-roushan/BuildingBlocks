@@ -58,15 +58,11 @@ function StudentViewCoursesPage() {
     let copyFilters = { ...filters };
     const indexOfCurrentSection =
       Object.keys(copyFilters).indexOf(getSectionId);
-
-    console.log(indexOfCurrentSection, getSectionId);
     if (indexOfCurrentSection === -1) {
       copyFilters = {
         ...copyFilters,
         [getSectionId]: [getCurrentOption.id],
       };
-
-      console.log(copyFilters);
     } else {
       const indexOfCurrentOption = copyFilters[getSectionId].indexOf(
         getCurrentOption.id

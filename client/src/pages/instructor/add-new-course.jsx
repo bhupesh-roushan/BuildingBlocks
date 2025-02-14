@@ -108,8 +108,6 @@ function AddNewCoursePage() {
       navigate(-1);
       setCurrentEditedCourseId(null);
     }
-
-    console.log(courseFinalFormData, "courseFinalFormData");
   }
 
   //this function is used to fetch the current course details
@@ -128,12 +126,9 @@ function AddNewCoursePage() {
         return acc;
       }, {});
 
-      console.log(setCourseFormData, response?.data, "setCourseFormData");
       setCourseLandingFormData(setCourseFormData);
       setCourseCurriculumFormData(response?.data?.curriculum);
     }
-
-    console.log(response, "response");
   }
 
   // for fetching the current course details on the click of edit button

@@ -27,14 +27,12 @@ function InstructorDashboardpage() {
     if (response?.success) {
       setInstructorCoursesList(response?.data);
     }
-    console.log(response?.data, "response?.data");
   }
   useEffect(() => {
     fetchAllCourses();
   }, []);
 
   const { auth } = useContext(AuthContext);
-  console.log(auth?.user?._id, "auth?.user?._id");
 
   //added by myself
   const [coursesByInstructorId, setCoursesByInstructorId] = useState([]);
@@ -46,8 +44,6 @@ function InstructorDashboardpage() {
       setCoursesByInstructorId(response?.data);
       setInstructorName(response?.data[0]?.instructorName);
     }
-    console.log(response?.data, "response?.data2");
-    console.log(instructorName, "instructorName");
   }
 
   useEffect(() => {

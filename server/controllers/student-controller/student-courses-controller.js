@@ -14,7 +14,6 @@ export const getCoursesByStudentId = async (req, res) => {
       data: studentBoughtCourses?.courses,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some Error While Getting Student Courses",

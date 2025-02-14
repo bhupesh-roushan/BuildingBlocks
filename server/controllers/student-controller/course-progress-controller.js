@@ -66,7 +66,6 @@ export const markCurrentLectureAsViewed = async (req, res) => {
       data: progress,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -137,7 +136,6 @@ export const getCurrentCourseProgress = async (req, res) => {
       },
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -172,7 +170,6 @@ export const resetCurrentCourseProgress = async (req, res) => {
       data: progress,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some error occured!",

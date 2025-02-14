@@ -17,7 +17,6 @@ router.post("/upload", upload.single("file"), async (req, res) => {
       data: result,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({ success: false, message: "Error uploading file" });
   }
 });
@@ -36,7 +35,6 @@ router.delete("/delete/:id", async (req, res) => {
       .status(200)
       .json({ success: true, message: "Media deleted successfully" });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 });
@@ -54,8 +52,6 @@ router.post("/bulk-upload", upload.array("files", 10), async (req, res) => {
       data: results,
     });
   } catch (event) {
-    console.log(event);
-
     res
       .status(500)
       .json({ success: false, message: "Error in bulk uploading files" });

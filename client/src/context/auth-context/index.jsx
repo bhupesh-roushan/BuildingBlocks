@@ -63,7 +63,6 @@ export function AuthProvider({ children }) {
         });
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message || "Invalid");
     }
   }
@@ -87,7 +86,6 @@ export function AuthProvider({ children }) {
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       if (!error?.response?.data?.success) {
         setAuth({
           authenticate: false,

@@ -49,7 +49,6 @@ export const getAllStudentViewCourses = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Courses Retrieved", data: coursesList });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Internal Server Error",
@@ -74,7 +73,6 @@ export const getStudentViewCourseDetails = async (req, res) => {
       data: courseDetails,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       success: false,
       message: "Some error occured!",
@@ -95,7 +93,6 @@ export const checkCoursePurchaseInfo = async (req, res) => {
       data: ifStudentAlreadyBoughtCurrentCourse,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Internal Server Error",

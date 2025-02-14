@@ -16,7 +16,6 @@ export const addNewCourse = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some Error Occured while adding new course",
@@ -35,7 +34,6 @@ export const getAllCourses = async (req, res) => {
       data: coursesList,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some Error Occured while adding new course",
@@ -56,7 +54,6 @@ export const getCoursesByInstructorId = async (req, res) => {
       data: coursesList,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some Error Occured while fetching courses",
@@ -83,7 +80,7 @@ export const getCourseDetailsByID = async (req, res) => {
       data: courseDeatils,
     });
   } catch (error) {
-    console.log(error);
+
     res.status(500).json({
       success: false,
       message: "Some Error Occured while adding new course",
@@ -118,7 +115,6 @@ export const updateCourseByID = async (req, res) => {
       data: updatedCourse,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Some Error Occured while adding new course",

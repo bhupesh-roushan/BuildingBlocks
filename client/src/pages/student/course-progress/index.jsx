@@ -70,7 +70,6 @@ function StudentViewCourseProgressPage() {
         if (response?.data?.progress?.length === 0) {
           setCurrentLecture(response?.data?.courseDetails?.curriculum[0]);
         } else {
-          console.log("logging here");
           const lastIndexOfViewedAsTrue = response?.data?.progress.reduceRight(
             (acc, obj, index) => {
               return acc === -1 && obj.viewed ? index : acc;
@@ -127,8 +126,6 @@ function StudentViewCourseProgressPage() {
   useEffect(() => {
     if (showConfetti) setTimeout(() => setShowConfetti(false), 15000);
   }, [showConfetti]);
-
-  console.log(currentLecture, "currentLecture");
   return (
     <div className="flex flex-col h-screen bg-black text-white">
       {showConfetti && (

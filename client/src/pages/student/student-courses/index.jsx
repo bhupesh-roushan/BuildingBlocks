@@ -18,7 +18,6 @@ function StudentCoursesPage() {
     if (response?.success) {
       setStudentBoughtCourseList(response?.data);
     }
-    console.log(response, "response");
   }
 
   useEffect(() => {

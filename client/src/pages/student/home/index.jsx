@@ -38,7 +38,6 @@ function StudentHomePage() {
     if (response?.success) {
       setStudentViewCoursesList(response?.data);
     }
-    console.log(response?.data);
   }
 
   // for navigating to the course details page
@@ -97,8 +96,8 @@ function StudentHomePage() {
           ))}
         </div>
       </section>
-      {/* //for carousel component */}
 
+      {/* //for carousel component */}
       <section className="bg-black p-2">
         <h2 className="text-white text-center text-lg sm:text-xl font-bold my-2">
           Builded the Current Workforce In

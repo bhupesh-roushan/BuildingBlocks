@@ -89,7 +89,7 @@ function CourseCurriculum() {
           setMediaUploadProgress(false);
         }
       } catch (error) {
-        console.log(error);
+        console.log(error, "error");
       }
     }
   }
@@ -156,8 +156,6 @@ function CourseCurriculum() {
         bulkFormData,
         setMediaUploadProgressPercentage
       );
-
-      console.log(response, "bulk");
       if (response?.success) {
         let cpyCourseCurriculumFormdata =
           areAllCourseCurriculumFormDataObjectsEmpty(courseCurriculumFormData)
