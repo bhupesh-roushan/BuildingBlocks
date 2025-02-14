@@ -1,18 +1,20 @@
-import InstructorCourses from "@/components/instructor-view/courses";
-import InstructorDashboard from "@/components/instructor-view/dashboard";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import InstructorCourses from "../../components/instructor-view/courses/index";
+import InstructorDashboard from "../../components/instructor-view/dashboard/index";
+import { Button } from "../../components/ui/button";
+import { Tabs, TabsContent } from "../../components/ui/tabs";
 
-import { AuthContext } from "@/context/auth-context";
-import { instructorContext } from "@/context/instructor-context";
-import { fetchInstructorCourseListService } from "@/services";
+import { AuthContext } from "../../context/auth-context/index";
+import { instructorContext } from "../../context/instructor-context/index";
+import {
+  fetchInstructorCourseListService,
+  fetchCoursesByInstructorIdService,
+} from "../../services/index.js";
 import { BarChart, Book, LogOut } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { LuLinkedin } from "react-icons/lu";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import { fetchCoursesByInstructorIdService } from "@/services";
 
 function InstructorDashboardpage() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -38,10 +40,7 @@ function InstructorDashboardpage() {
   const [coursesByInstructorId, setCoursesByInstructorId] = useState([]);
   const [instructorName, setInstructorName] = useState("");
 
-  
-
   async function fetchCoursesByInstructorId() {
-
     const response = await fetchCoursesByInstructorIdService(auth?.user?._id);
     if (response?.success) {
       setCoursesByInstructorId(response?.data);

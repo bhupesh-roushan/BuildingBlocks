@@ -1,22 +1,27 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import VideoPlayer from "@/components/video-player";
-import { AuthContext } from "@/context/auth-context";
-import { StudentContext } from "@/context/student-context";
+} from "../../../components/ui/dialog";
+import { Label } from "../../../components/ui/label";
+import { ScrollArea } from "../../../components/ui/scroll-area";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../../components/ui/tabs";
+import VideoPlayer from "../../../components/video-player/index";
+import { AuthContext } from "../../../context/auth-context/index";
+import { StudentContext } from "../../../context/student-context/index";
 import {
   getCurrentCourseProgressService,
   markCurrentLectureAsViewedService,
   resetCurrentCourseProgressService,
-} from "@/services";
+} from "../../../services/index.js";
 import {
   Book,
   CheckCircle,

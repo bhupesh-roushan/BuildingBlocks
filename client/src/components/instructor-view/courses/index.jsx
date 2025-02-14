@@ -1,11 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import {
   Table,
   TableBody,
@@ -13,18 +7,18 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "../../ui/table";
 import {
   courseCurriculumInitialFormData,
   courseLandingInitialFormData,
-} from "@/config";
-import { instructorContext } from "@/context/instructor-context";
+} from "../../../config/index.js";
+import { instructorContext } from "../../../context/instructor-context/index";
 
 import { Edit, Users } from "lucide-react";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-function InstructorCourses({ listOfCourses, coursesByInstructorId}) {
+function InstructorCourses({ listOfCourses, coursesByInstructorId }) {
   const navigate = useNavigate();
   const {
     setCurrentEditedCourseId,

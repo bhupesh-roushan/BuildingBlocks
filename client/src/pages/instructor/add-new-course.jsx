@@ -1,22 +1,26 @@
-import CourseCurriculum from "@/components/instructor-view/courses/add-new-course/course-curriculum";
-import CourseLanding from "@/components/instructor-view/courses/add-new-course/course-landing";
-import CourseSettings from "@/components/instructor-view/courses/add-new-course/course-settings";
-import InstructorHeader from "@/components/instructor-view/header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CourseCurriculum from "../../components/instructor-view/courses/add-new-course/course-curriculum";
+import CourseLanding from "../../components/instructor-view/courses/add-new-course/course-landing";
+import CourseSettings from "../../components/instructor-view/courses/add-new-course/course-settings";
+import InstructorHeader from "../../components/instructor-view/header/index";
+import { Button } from "../../components/ui/button";
+import { Card, CardContent } from "../../components/ui/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../../components/ui/tabs";
 import {
   courseCurriculumInitialFormData,
   courseLandingInitialFormData,
-} from "@/config";
-import { AuthContext } from "@/context/auth-context";
-import { instructorContext } from "@/context/instructor-context";
+} from "../../config/index.js";
+import { AuthContext } from "../../context/auth-context/index";
+import { instructorContext } from "../../context/instructor-context/index";
 import {
   addNewCourseService,
   fetchInstructorCourseDetailsService,
   updateCourseByIdService,
- 
-} from "@/services";
+} from "../../services/index.js";
 
 import React, { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -142,10 +146,9 @@ function AddNewCoursePage() {
     if (params?.courseId) setCurrentEditedCourseId(params?.courseId);
   }, [params?.courseId]);
 
-
   return (
     <div className="container mx-auto p-4 mt-20">
-     <InstructorHeader/>
+      <InstructorHeader />
       <div className="flex justify-between">
         <h1 className="text-2xl sm:text-3xl font-extrabold mb-5">
           Create a New Course
@@ -195,6 +198,3 @@ function AddNewCoursePage() {
 }
 
 export default AddNewCoursePage;
-
-
-

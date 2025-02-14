@@ -57,7 +57,7 @@ export const initialSignUpFormData = {
   userName: "",
   useremail: "",
   password: "",
-  role:""
+  role: "",
 };
 
 export const languageOptions = [

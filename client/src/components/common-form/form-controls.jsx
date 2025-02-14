@@ -64,31 +64,6 @@ function FormControls({ formControls = [], formData, setFormData }) {
         );
         break;
 
-
-      // case "select":
-      //   element = (
-      //     <Select
-      //       onValueChange={(value) =>
-      //         setFormData({ ...formData, [getControlItem.name]: value })
-      //       }
-      //       value={currentControlItemValue}
-      //     >
-      //       <SelectTrigger className="w-full">
-      //         <SelectValue placeholder={getControlItem.label} />
-      //       </SelectTrigger>
-      //       <SelectContent>
-      //         {getControlItem.options && getControlItem.options.length > 0
-      //           ? getControlItem.options.map((optionItem) => (
-      //               <SelectItem key={optionItem.value} value={optionItem.value}>
-      //                 {optionItem.label}
-      //               </SelectItem>
-      //             ))
-      //           : null}
-      //       </SelectContent>
-      //     </Select>
-      //   );
-      //   break;
-
       //for rendering textarea field
 
       case "textarea":

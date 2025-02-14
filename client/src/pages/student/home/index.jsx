@@ -1,22 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import banner from "../../../assets/banner3.jpg";
-import { courseCategories } from "@/config";
-import { Button } from "@/components/ui/button";
-import { StudentContext } from "@/context/student-context";
+import { courseCategories } from "../../../config/index.js";
+import { Button } from "../../../components/ui/button";
+import { StudentContext } from "../../../context/student-context/index";
 import {
   checkCoursePurchaseInfoService,
   fetchStudentViewCourseListService,
-} from "@/services";
-import { AuthContext } from "@/context/auth-context";
+} from "../../../services/index.js";
+import { AuthContext } from "../../../context/auth-context/index";
 import { useNavigate } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
+} from "../../../components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import companies from "../../../config/companies.json";
-import { ArrowDown } from "lucide-react";
 
 function StudentHomePage() {
   const { studentViewCoursesList, setStudentViewCoursesList } =

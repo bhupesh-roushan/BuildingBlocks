@@ -1,13 +1,18 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import VideoPlayer from "@/components/video-player";
-import { StudentContext } from "@/context/student-context";
+import { Button } from "../../../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
+import { Skeleton } from "../../../components/ui/skeleton";
+import VideoPlayer from "../../../components/video-player";
+import { StudentContext } from "../../../context/student-context/index";
 import {
   checkCoursePurchaseInfoService,
   createPaymentService,
   fetchStudentViewCourseDetailsService,
-} from "@/services";
+} from "../../../services/index.js";
 import { CheckCircle, Globe, Lock, PlayCircle } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -18,8 +23,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { AuthContext } from "@/context/auth-context";
+} from "../../../components/ui/dialog";
+import { AuthContext } from "../../../context/auth-context/index";
 
 function StudentViewCourseDetailsPage() {
   const {

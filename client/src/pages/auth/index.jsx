@@ -1,4 +1,4 @@
-import CommonForm from "@/components/common-form";
+import CommonForm from "../../components/common-form";
 import {
   Card,
   CardContent,
@@ -6,9 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { signInFromControls, signUpFromControls } from "@/config";
-import { AuthContext } from "@/context/auth-context";
-import React, { useContext, useState } from "react";
+import { signInFromControls, signUpFromControls } from "../../config/index.js";
+import { AuthContext } from "../../context/auth-context/index";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaGithub } from "react-icons/fa";
@@ -16,7 +16,6 @@ import { LuLinkedin } from "react-icons/lu";
 import { FaGlobe } from "react-icons/fa";
 
 function AuthPage() {
-
   const {
     signInFormData,
     setSignInFormData,
@@ -56,7 +55,9 @@ function AuthPage() {
         </Link>
       </header>
 
-      <div className={` flex items-center justify-center min-h-[100%] bg-background mt-16 mb-5 ml-5 mr-5 `}>
+      <div
+        className={` flex items-center justify-center min-h-[100%] bg-background mt-16 mb-5 ml-5 mr-5 `}
+      >
         <Card className="p-4  w-full max-w-md">
           <CardHeader>
             <CardTitle className="text-center">
@@ -65,7 +66,7 @@ function AuthPage() {
             <CardDescription className="text-center">
               {isSignIn
                 ? "Enter your Email and Password to access your account"
-                 : "Enter your details to get started"}
+                : "Enter your details to get started"}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">

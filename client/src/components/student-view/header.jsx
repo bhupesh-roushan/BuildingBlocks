@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
-import { Monitor} from "lucide-react";
-import { AuthContext } from "@/context/auth-context";
+import { Monitor } from "lucide-react";
+import { AuthContext } from "../../context/auth-context/index";
 
 function StudentViewCommonHeader() {
   //for logout

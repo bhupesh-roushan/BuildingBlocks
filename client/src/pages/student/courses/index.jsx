@@ -1,22 +1,22 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "../../../components/ui/button";
+import { Card, CardContent, CardTitle } from "../../../components/ui/card";
+import { Checkbox } from "../../../components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Label } from "@/components/ui/label";
-import { Skeleton } from "@/components/ui/skeleton";
-import { filterOptions, sortOptions } from "@/config";
-import { AuthContext } from "@/context/auth-context";
-import { StudentContext } from "@/context/student-context";
+} from "../../../components/ui/dropdown-menu";
+import { Label } from "../../../components/ui/label";
+import { Skeleton } from "../../../components/ui/skeleton";
+import { filterOptions, sortOptions } from "../../../config/index.js";
+import { AuthContext } from "../../../context/auth-context/index";
+import { StudentContext } from "../../../context/student-context/index";
 import {
   checkCoursePurchaseInfoService,
   fetchStudentViewCourseListService,
-} from "@/services";
+} from "../../../services/index.js";
 import { ArrowDownUp } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -128,18 +128,18 @@ function StudentViewCoursesPage() {
 
   //if the filters are selected and refreshes the page the courses will be fetched with the same filters but with price low to high
 
-    useEffect(() => {
-      setSort("price-lowtohigh");
-      setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
-    }, []);
+  useEffect(() => {
+    setSort("price-lowtohigh");
+    setFilters(JSON.parse(sessionStorage.getItem("filters")) || {});
+  }, []);
 
-    //if going back to the home page the filters will be cleared
+  //if going back to the home page the filters will be cleared
 
-    useEffect(() => {
-      return () => {
-        sessionStorage.removeItem("filters");
-      };
-    }, []);
+  useEffect(() => {
+    return () => {
+      sessionStorage.removeItem("filters");
+    };
+  }, []);
 
   return (
     <div className="container mx-auto p-4">

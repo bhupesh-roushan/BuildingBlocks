@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { AuthContext } from "@/context/auth-context";
-import { StudentContext } from "@/context/student-context";
-import { fetchStudentBoughtCoursesService } from "@/services";
-import { Play, Watch, WatchIcon } from "lucide-react";
+import { Button } from "../../../components/ui/button";
+import { Card, CardContent, CardFooter } from "../../../components/ui/card";
+import { AuthContext } from "../../../context/auth-context/index";
+import { StudentContext } from "../../../context/student-context/index";
+import { fetchStudentBoughtCoursesService } from "../../../services/index.js";
+import { Play } from "lucide-react";
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -37,11 +37,20 @@ function StudentCoursesPage() {
                   alt={course?.title}
                   className=" w-full object-cover rounded-md mb-4"
                 />
-                <h3 className="font-bold text-md sm:text-lg mb-1">{course?.title}</h3>
-                <p className="text-sm text-gray-700 mb-2">{course?.instructorName}</p>
+                <h3 className="font-bold text-md sm:text-lg mb-1">
+                  {course?.title}
+                </h3>
+                <p className="text-sm text-gray-700 mb-2">
+                  {course?.instructorName}
+                </p>
               </CardContent>
               <CardFooter>
-                <Button onClick={()=>navigate(`/course-progress/${course?.courseId}`)} className="flex-1 bg-white text-black hover:scale-105 transition-all shadow-sm shadow-green-200 hover:bg-white cursor-pointer">
+                <Button
+                  onClick={() =>
+                    navigate(`/course-progress/${course?.courseId}`)
+                  }
+                  className="flex-1 bg-white text-black hover:scale-105 transition-all shadow-sm shadow-green-200 hover:bg-white cursor-pointer"
+                >
                   <Play className="mr-2 h-4 w-4 text-green-500" />
                   Start Watching
                 </Button>

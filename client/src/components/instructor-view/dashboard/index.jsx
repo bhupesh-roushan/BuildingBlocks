@@ -1,4 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../components/ui/card";
 import {
   Table,
   TableBody,
@@ -6,13 +11,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "../../../components/ui/table";
 
 import { IndianRupee, Users } from "lucide-react";
 
-function InstructorDashboard({ listOfCourses, coursesByInstructorId}) {
-
-  
+function InstructorDashboard({ listOfCourses, coursesByInstructorId }) {
   function calculateTotalStudentsAndProfit() {
     const { totalStudents, totalProfit, studentList } =
       coursesByInstructorId.reduce(

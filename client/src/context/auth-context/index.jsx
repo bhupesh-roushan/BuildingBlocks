@@ -1,6 +1,13 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import { initialSignInFormData, initialSignUpFormData } from "@/config";
-import { checkAuthService, loginService, registerService } from "@/services";
+import { Skeleton } from "../../components/ui/skeleton";
+import {
+  initialSignInFormData,
+  initialSignUpFormData,
+} from "../../config/index.js";
+import {
+  checkAuthService,
+  loginService,
+  registerService,
+} from "../../services/index.js";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -23,23 +30,22 @@ export function AuthProvider({ children }) {
     event.preventDefault();
     const data = await registerService(signUpFormData);
     toast.success(data?.message);
-    if(data?.success){
+    if (data?.success) {
       setIsSignIn(true);
       setSignUpFormData({
-        ...initialSignUpFormData
-      })
+        ...initialSignUpFormData,
+      });
     }
   }
-
 
   //for login user
   async function handleLoginUser(event) {
     event.preventDefault();
     try {
       const data = await loginService(signInFormData);
-  
+
       //for storing the token in session storage so that when the page refreshes we can check if the user is logged in or not
-  
+
       if (data.success) {
         sessionStorage.setItem(
           "accessToken",
@@ -80,7 +86,6 @@ export function AuthProvider({ children }) {
         });
         setLoading(false);
       }
-
     } catch (error) {
       console.log(error);
       if (!error?.response?.data?.success) {
@@ -93,13 +98,12 @@ export function AuthProvider({ children }) {
     }
   }
 
-
-//for resetting the credentials on logout
+  //for resetting the credentials on logout
   function resetCredentials() {
     setAuth({
       authenticate: false,
       user: null,
-    })
+    });
     toast.success("You have been logged out successfully");
   }
 
@@ -119,8 +123,8 @@ export function AuthProvider({ children }) {
         handleLoginUser,
         auth,
         resetCredentials,
-        isSignIn, setIsSignIn
-
+        isSignIn,
+        setIsSignIn,
       }}
     >
       {

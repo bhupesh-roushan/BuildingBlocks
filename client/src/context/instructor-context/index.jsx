@@ -1,7 +1,7 @@
 import {
   courseCurriculumInitialFormData,
   courseLandingInitialFormData,
-} from "@/config";
+} from "../../config/index.js";
 import { createContext, useState } from "react";
 
 export const instructorContext = createContext();
