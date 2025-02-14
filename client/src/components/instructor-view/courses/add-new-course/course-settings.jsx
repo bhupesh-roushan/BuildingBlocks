@@ -1,9 +1,9 @@
-import MediaProgressbar from "@/components/media-progress-bar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { instructorContext } from "@/context/instructor-context";
-import { mediaUploadService } from "@/services";
+import MediaProgressbar from "../../../media-progress-bar/index";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../ui/card";
+import { Input } from "../../../ui/input";
+import { Label } from "../../../ui/label";
+import { instructorContext } from "../../../../context/instructor-context/index";
+import { mediaUploadService } from "../../../../services/index.js";
 import React, { useContext } from "react";
 
 function CourseSettings() {
