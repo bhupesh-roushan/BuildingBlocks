@@ -1,17 +1,22 @@
-import MediaProgressBar from "@/components/media-progress-bar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import VideoPlayer from "@/components/video-player";
-import { courseCurriculumInitialFormData } from "@/config";
-import { instructorContext } from "@/context/instructor-context";
+import MediaProgressBar from "../../../../components/media-progress-bar/index";
+import { Button } from "../../../../components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../../components/ui/card";
+import { Input } from "../../../../components/ui/input";
+import { Label } from "../../../../components/ui/label";
+import { Switch } from "../../../../components/ui/switch";
+import VideoPlayer from "../../../../components/video-player/index";
+import { courseCurriculumInitialFormData } from "../../../../config/index.js";
+import { instructorContext } from "../../../../context/instructor-context/index";
 import {
   mediaBulkUploadService,
   mediaDeleteService,
   mediaUploadService,
-} from "@/services";
+} from "../../../../services";
 import { Upload } from "lucide-react";
 import React, { useContext, useRef } from "react";
 
@@ -197,8 +202,12 @@ function CourseCurriculum() {
     <Card className="shadow-none border-none">
       <CardHeader className="flex flex-row justify-between">
         <CardTitle>
-          <h1 className="text-2xl font-extrabold mb-2">Create Course Curriculum</h1>
-          <p className="text-sm font-normal text-orange-500">Make atleast one lecture for your course as free preview</p>
+          <h1 className="text-2xl font-extrabold mb-2">
+            Create Course Curriculum
+          </h1>
+          <p className="text-sm font-normal text-orange-500">
+            Make atleast one lecture for your course as free preview
+          </p>
         </CardTitle>
         <div>
           <Input
