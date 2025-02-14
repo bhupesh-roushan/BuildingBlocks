@@ -84,21 +84,21 @@ export const getStudentViewCourseDetails = async (req, res) => {
 
 export const checkCoursePurchaseInfo = async (req, res) => {
   try {
-    const {id,studentId}= req.params
+    const { id, studentId } = req.params;
     const studentCourses = await StudentCourses.findOne({
       userId: studentId,
     });
     const ifStudentAlreadyBoughtCurrentCourse =
-    studentCourses?.courses?.findIndex(item => item?.courseId === id) > -1;
+      studentCourses?.courses?.findIndex((item) => item?.courseId === id) > -1;
     res.status(200).json({
       success: true,
-      data: ifStudentAlreadyBoughtCurrentCourse
+      data: ifStudentAlreadyBoughtCurrentCourse,
     });
   } catch (error) {
-     console.log(error);
-     res.status(500).json({
-       success: false,
-       message: "Internal Server Error",
-     });
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
   }
-}
+};

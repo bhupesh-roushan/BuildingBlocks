@@ -4,8 +4,8 @@ export const getCoursesByStudentId = async (req, res) => {
   try {
     const { studentId } = req.params;
 
-    const studentBoughtCourses = await StudentCourses.findOne({ 
-        userId:studentId 
+    const studentBoughtCourses = await StudentCourses.findOne({
+      userId: studentId,
     });
 
     res.status(200).json({
@@ -15,13 +15,9 @@ export const getCoursesByStudentId = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Some Error While Getting Student Courses",
-      });
+    res.status(500).json({
+      success: false,
+      message: "Some Error While Getting Student Courses",
+    });
   }
 };
-
-

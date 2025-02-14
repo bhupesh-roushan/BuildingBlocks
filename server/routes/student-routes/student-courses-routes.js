@@ -1,4 +1,3 @@
-
 import express from "express";
 
 import { getCoursesByStudentId } from "../../controllers/student-controller/student-courses-controller.js";

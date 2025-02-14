@@ -68,7 +68,7 @@ export const getCoursesByInstructorId = async (req, res) => {
 
 export const getCourseDetailsByID = async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const courseDeatils = await Course.findById(id);
 
     if (!courseDeatils) {

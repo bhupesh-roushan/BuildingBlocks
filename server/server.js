@@ -17,7 +17,6 @@ import { studentCoursesRoutes } from "./routes/student-routes/student-courses-ro
 
 import { studentCourseProgressRoutes } from "./routes/student-routes/course-progress-routes.js";
 
-
 //middleware configuration
 app.use(
   cors({
@@ -47,9 +46,6 @@ app.use("/student/course", studentViewCourseRoutes);
 app.use("/student/order", studentViewOrderRoutes);
 app.use("/student/courses-bought", studentCoursesRoutes);
 app.use("/student/course-progress", studentCourseProgressRoutes);
-
-
-
 
 //error handling middleware
 app.use((err, req, res, next) => {

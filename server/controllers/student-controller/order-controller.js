@@ -1,4 +1,4 @@
-import {paypal} from "../../helpers/paypal.js";
+import { paypal } from "../../helpers/paypal.js";
 import { Order } from "../../models/Order.js";
 import { Course } from "../../models/Course.js";
 import { StudentCourses } from "../../models/StudentCourses.js";
@@ -183,7 +183,3 @@ export const capturePaymentAndFinalizeOrder = async (req, res) => {
     });
   }
 };
-
-
-
-

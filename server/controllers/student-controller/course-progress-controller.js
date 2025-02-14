@@ -27,7 +27,7 @@ export const markCurrentLectureAsViewed = async (req, res) => {
       );
 
       if (lectureProgress) {
-        lectureProgress.viewed = true
+        lectureProgress.viewed = true;
         lectureProgress.dateViewed = new Date();
       } else {
         progress.lecturesProgress.push({

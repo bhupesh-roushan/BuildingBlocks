@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
   }
 
   const hashPassword = await bcrypt.hash(password, 10);
-  
+
   //create a new user
   const newUser = new User({
     userName,
@@ -41,8 +41,6 @@ export const registerUser = async (req, res) => {
     message: "User Registered Successfully!",
   });
 };
-
-
 
 // for logging in the user
 export const loginUser = async (req, res) => {
