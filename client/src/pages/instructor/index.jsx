@@ -15,6 +15,8 @@ import { FaGithub, FaGlobe } from "react-icons/fa";
 import { LuLinkedin } from "react-icons/lu";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import bb from "./../../assets/bb.svg"
+import bbLogo from "./../../assets/bbLogo.svg"
 
 function InstructorDashboardpage() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -90,7 +92,7 @@ function InstructorDashboardpage() {
     <div className="flex h-full min-h-screen bg-gray-100">
       <aside className="w-64 bg-white  shadow-sm hidden md:block">
         <div className="p-4">
-          <img src="/src/assets/bbLogo.svg" alt="logo" className="mb-8 w-36 " />
+          <img src={bbLogo} alt="logo" className="mb-8 w-36 " />
           <nav>
             {menuItems.map((menuItem) => (
               <Button
@@ -128,7 +130,7 @@ function InstructorDashboardpage() {
         <div className="flex mt-10 w-full fixed right-[-2%] bottom-5 flex-col  items-center">
           <div className="flex items-center justify-center">
             <img
-              src="./src/assets/bb.svg"
+              src={bb}
               alt="logo"
               className="w-3 md:w-5 mt-2 animate-pulse"
             />

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Monitor } from "lucide-react";
 import { AuthContext } from "../../context/auth-context/index";
+import bbLogo from "./../../assets/bbLogo.svg";
 
 function StudentViewCommonHeader() {
   //for logout
@@ -20,7 +21,7 @@ function StudentViewCommonHeader() {
       <div className="flex items-center space-x-4">
         <Link to={"/home"} className="flex items-center space-x-2">
           <img
-            src="/src/assets/bbLogo.svg"
+            src={bbLogo}
             alt="logo"
             className="h-6 md:h-8 hover:scale-105 transition-all"
           />

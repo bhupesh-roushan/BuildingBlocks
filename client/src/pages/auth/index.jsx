@@ -14,6 +14,8 @@ import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaGithub } from "react-icons/fa";
 import { LuLinkedin } from "react-icons/lu";
 import { FaGlobe } from "react-icons/fa";
+import bb from "./../../assets/bb.svg"
+import bbLogo from "./../../assets/bbLogo.svg"
 
 function AuthPage() {
   const {
@@ -48,7 +50,7 @@ function AuthPage() {
       <header className="sticky bg-white top-0 px-4 lg:px-6 h-14 flex items-center border-b">
         <Link to={"/"} className="flex  items-center justify-center">
           <img
-            src="./src/assets/bbLogo.svg"
+            src={bbLogo}
             alt="logo"
             className="w-36 h-36 mr -4"
           />
@@ -111,7 +113,7 @@ function AuthPage() {
         <div className="fixed mt-5  bottom-5 flex flex-col items-center justify-center w-full">
           <div className="flex items-center justify-center">
             <img
-              src="./src/assets/bb.svg"
+              src={bb}
               alt="logo"
               className="w-3 md:w-5 mt-2 animate-pulse"
             />

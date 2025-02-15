@@ -2,6 +2,7 @@ import { Button } from "../../ui/button";
 import { AuthContext } from "../../../context/auth-context/index";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import bbLogo from "./../../../assets/bbLogo.svg";
 
 function InstructorHeader() {
   const { resetCredentials } = useContext(AuthContext);
@@ -15,7 +16,7 @@ function InstructorHeader() {
         {" "}
         <Link to={"/"}>
           <img
-            src="/src/assets/bbLogo.svg"
+            src={bbLogo}
             alt="logo"
             className="w-36 h-36 mr-4 ml-5"
           />
