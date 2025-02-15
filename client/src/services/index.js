@@ -116,19 +116,16 @@ export async function createPaymentService(formData) {
   return data;
 }
 
-export async function captureAndFinalizePaymentService(
-  paymentId,
-  payerId,
-  orderId
-) {
+export async function captureAndFinalizePaymentService(token, payerId, orderId) {
   const { data } = await axiosInstance.post(`/student/order/capture`, {
-    paymentId,
+    paymentId: token, // Update 'paymentId' to 'token' here
     payerId,
-    orderId,
+    orderId, // Make sure this is correct and corresponds to the saved order in the database
   });
 
   return data;
 }
+
 
 export async function fetchStudentBoughtCoursesService(studentId) {
   const { data } = await axiosInstance.get(

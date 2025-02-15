@@ -7,35 +7,42 @@ import { useLocation } from "react-router-dom";
 function PaypalPaymentReturnPage() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const paymentId = params.get("paymentId");
-  const payerId = params.get("PayerID");
+  const token = params.get("token"); // Change to 'token'
+  const payerId = params.get("PayerID"); // 'PayerID' is correct
 
   useEffect(() => {
-    if (paymentId && payerId) {
+    if (token && payerId) { // Use 'token' here
       async function capturePayment() {
         const orderId = JSON.parse(sessionStorage.getItem("currentOrderId"));
 
-        const response = await captureAndFinalizePaymentService(
-          paymentId,
-          payerId,
-          orderId
-        );
+        if (!orderId) {
+          // Handle case where orderId is missing in sessionStorage
+          window.location.href = "/error";
+          return;
+        }
 
+        // Pass 'token' instead of 'paymentId' to the service
+        const response = await captureAndFinalizePaymentService(token, payerId, orderId);
+        
+        console.log(response); // Log response to check if it is successful
+        
         if (response?.success) {
           sessionStorage.removeItem("currentOrderId");
           window.location.href = "/student-courses";
+        } else {
+          // Handle failure case (e.g., payment failure)
+          window.location.href = "/error"; // Redirect to error page
         }
       }
 
       capturePayment();
     }
-  }, [payerId, paymentId]);
+  }, [payerId, token]); // Use 'token' here as well
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          {" "}
           <div className="flex flex-row items-center justify-center gap-5 text-3xl w-full">
             <span>
               <CircleDashed className="animate-spin" />

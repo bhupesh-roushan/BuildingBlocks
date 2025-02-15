@@ -1,7 +1,9 @@
-import { paypal } from "../../helpers/paypal.js";
+import { client } from "../../helpers/paypal.js";
 import { Order } from "../../models/Order.js";
 import { Course } from "../../models/Course.js";
 import { StudentCourses } from "../../models/StudentCourses.js";
+import paypal from '@paypal/checkout-server-sdk'; // Ensure the PayPal SDK is imported
+
 
 export const createOrder = async (req, res) => {
   try {
@@ -23,84 +25,83 @@ export const createOrder = async (req, res) => {
       coursePricing,
     } = req.body;
 
-    const create_payment_json = {
-      intent: "sale",
-      payer: {
-        payment_method: "paypal",
-      },
-      redirect_urls: {
+    const request = new paypal.orders.OrdersCreateRequest();
+    request.requestBody({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "USD",
+            value: coursePricing.toFixed(2),
+            breakdown: {
+              item_total: {
+                currency_code: "USD",
+                value: coursePricing.toFixed(2),
+              },
+            },
+          },
+          description: courseTitle,
+          items: [
+            {
+              name: courseTitle,
+              sku: courseId,
+              unit_amount: {
+                currency_code: "USD",
+                value: coursePricing.toFixed(2),
+              },
+              quantity: "1",
+            },
+          ],
+        },
+      ],
+      application_context: {
         return_url: `${process.env.CLIENT_URL}/payment-return`,
         cancel_url: `${process.env.CLIENT_URL}/payment-cancel`,
       },
-      transactions: [
-        {
-          item_list: {
-            items: [
-              {
-                name: courseTitle,
-                sku: courseId,
-                price: coursePricing,
-                currency: "USD",
-                quantity: 1,
-              },
-            ],
-          },
-          amount: {
-            currency: "USD",
-            total: coursePricing.toFixed(2),
-          },
-          description: courseTitle,
-        },
-      ],
-    };
+    });
 
-    paypal.payment.create(create_payment_json, async (error, paymentInfo) => {
-      if (error) {
-        return res.status(500).json({
-          success: false,
-          message: "Error while creating paypal payment!",
-        });
-      } else {
-        const newlyCreatedCourseOrder = new Order({
-          userId,
-          userName,
-          userEmail,
-          orderStatus,
-          paymentMethod,
-          paymentStatus,
-          orderDate,
-          paymentId,
-          payerId,
-          instructorId,
-          instructorName,
-          courseImage,
-          courseTitle,
-          courseId,
-          coursePricing,
-        });
+    const response = await client.execute(request);
 
-        await newlyCreatedCourseOrder.save();
+    const newlyCreatedCourseOrder = new Order({
+      userId,
+      userName,
+      userEmail,
+      orderStatus,
+      paymentMethod,
+      paymentStatus,
+      orderDate,
+      paymentId:response.result.id,
+      payerId,
+      instructorId,
+      instructorName,
+      courseImage,
+      courseTitle,
+      courseId,
+      coursePricing,
+    });
 
-        const approveUrl = paymentInfo.links.find(
-          (link) => link.rel == "approval_url"
-        ).href;
+    await newlyCreatedCourseOrder.save();
 
-        res.status(201).json({
-          success: true,
-          data: {
-            approveUrl,
-            orderId: newlyCreatedCourseOrder._id,
-          },
-        });
-      }
+    const approveUrl = response.result.links.find(
+      (link) => link.rel === "approve"
+    ).href;
+
+    res.status(201).json({
+      success: true,
+      data: {
+        approveUrl,
+        orderId: newlyCreatedCourseOrder._id,
+      },
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({
       success: false,
-      message: "Some error occured!",
+      message: "Error while creating PayPal payment!",
     });
   }
 };
+
 
 export const capturePaymentAndFinalizeOrder = async (req, res) => {
   try {
@@ -111,10 +112,24 @@ export const capturePaymentAndFinalizeOrder = async (req, res) => {
     if (!order) {
       return res.status(404).json({
         success: false,
-        message: "Order can not be found",
+        message: "Order cannot be found",
       });
     }
 
+    // Capture the PayPal payment
+    const request = new paypal.orders.OrdersCaptureRequest(paymentId);
+    request.requestBody({});
+
+    const response = await client.execute(request);
+
+    if (response.result.status !== "COMPLETED") {
+      return res.status(400).json({
+        success: false,
+        message: "Payment capture failed",
+      });
+    }
+
+    // Update the order status after capturing payment
     order.paymentStatus = "paid";
     order.orderStatus = "confirmed";
     order.paymentId = paymentId;
@@ -122,7 +137,7 @@ export const capturePaymentAndFinalizeOrder = async (req, res) => {
 
     await order.save();
 
-    //update out student course model
+    // Update the student course model
     const studentCourses = await StudentCourses.findOne({
       userId: order.userId,
     });
@@ -156,7 +171,7 @@ export const capturePaymentAndFinalizeOrder = async (req, res) => {
       await newStudentCourses.save();
     }
 
-    //update the course schema students
+    // Update the course schema with students
     await Course.findByIdAndUpdate(order.courseId, {
       $addToSet: {
         students: {
@@ -174,9 +189,10 @@ export const capturePaymentAndFinalizeOrder = async (req, res) => {
       data: order,
     });
   } catch (err) {
+    console.error("Error confirming payment:", err);
     res.status(500).json({
       success: false,
-      message: "Some error occured!",
+      message: "Some error occurred while confirming the payment!",
     });
   }
 };
