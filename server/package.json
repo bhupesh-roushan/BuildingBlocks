@@ -16,7 +16,6 @@
     "nodemon": "^3.1.9"
   },
   "dependencies": {
-    "@paypal/checkout-server-sdk": "^1.0.0",
     "@paypal/paypal-server-sdk": "^0.6.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
