@@ -3,7 +3,7 @@ import axios from "axios";
 // Create an axios instance with a base URL for the backend API endpoint which will be used in the application directly
 
 const axiosInstance = axios.create({
-  baseURL: "https://buildingblocks.onrender.com",
+  baseURL: "http://localhost:8000",
 });
 
 //in check auth we are passing authorization header ,everytime we refresh the page we will check if the user is logged in or not
