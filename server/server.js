@@ -4,7 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 //routes import
