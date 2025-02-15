@@ -56,6 +56,12 @@ app.use((err, req, res, next) => {
   });
 });
 
+//for production testing
+
+app.get("/server-status", (req, res) => {
+  res.send("Server is running");
+});
+
 //server configuration
 app.listen(PORT, () => {
   console.log(`Server is now running on Port ${PORT}`);
