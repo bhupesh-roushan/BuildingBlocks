@@ -1,8 +1,9 @@
-import { Card, CardHeader, CardTitle } from "../../../components/ui/card";
+import { Card, CardHeader, CardTitle, CardFooter } from "../../../components/ui/card";
 import { captureAndFinalizePaymentService } from "../../../services/index.js";
 import { CircleDashed } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import bbLogo from "../../../assets/bbLogo.svg";
 
 function PaypalPaymentReturnPage() {
   const location = useLocation();
@@ -40,19 +41,37 @@ function PaypalPaymentReturnPage() {
   }, [payerId, token]); // Use 'token' here as well
 
   return (
-    <Card>
+    <div className="relative min-h-screen bg-white flex flex-col items-center justify-center">
+
+    {/* Glassmorphic Circles with Orange Tint */}
+    <div className="absolute top-10 left-10 w-56 h-56 rounded-full bg-orange-400/30 backdrop-blur-lg opacity-60"></div>
+    <div className="absolute top-40 right-20 w-72 h-72 rounded-full bg-orange-400/40 backdrop-blur-lg opacity-50"></div>
+    <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full bg-orange-400/30 backdrop-blur-lg opacity-55"></div>
+    <div className="absolute bottom-40 right-20 w-56 h-56 rounded-full bg-orange-400/20 backdrop-blur-lg opacity-60"></div>
+    <div className="absolute top-80 left-60 w-72 h-72 rounded-full bg-orange-400/30 backdrop-blur-lg opacity-40"></div>
+
+    {/* Card Container */}
+    <Card className="z-10 p-10 shadow-lg bg-white/50 backdrop-blur-lg rounded-lg">
       <CardHeader>
         <CardTitle>
-          <div className="flex flex-row items-center justify-center gap-5 text-3xl w-full">
+          <div className="flex flex-col items-center justify-center gap-5 text-3xl w-full text-gray-800">
+            <span>Your Payment is Processing</span>
             <span>
-              <CircleDashed className="animate-spin" />
-            </span>{" "}
+              <CircleDashed className="animate-spin text-orange-600" />
+            </span>
             Please wait
-            <span className="animate-bounce">. . .</span>
+            <span className="animate-bounce text-orange-600">. . .</span>
           </div>
         </CardTitle>
       </CardHeader>
+      <CardFooter className="flex items-center justify-center text-gray-600">
+        <img src={bbLogo} alt="404 Error" className="w-24 h-24" />
+      </CardFooter>
     </Card>
+
+    {/* Optional text */}
+    <p className="text-lg flex flex-col text-center  text-gray-800 mt-4 font-light">We are processing your payment. <sapn>Please be patient while we finalize your transaction.</sapn> </p>
+  </div>
   );
 }
 
