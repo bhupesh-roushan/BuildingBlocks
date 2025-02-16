@@ -20,7 +20,8 @@ import { studentCourseProgressRoutes } from "./routes/student-routes/course-prog
 //middleware configuration
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    // origin: process.env.CLIENT_URL,
+    origin: "https://building-blocks-sable.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })

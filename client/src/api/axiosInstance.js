@@ -3,7 +3,8 @@ import axios from "axios";
 // Create an axios instance with a base URL for the backend API endpoint which will be used in the application directly
 
 const axiosInstance = axios.create({
-  baseURL: `${import.meta.env.VITE_SERVER_URL}`,
+  // baseURL: `${import.meta.env.VITE_SERVER_URL}`,
+  baseURL: "https://building-blocks-backend-server.vercel.app",
 });
 
 //in check auth we are passing authorization header ,everytime we refresh the page we will check if the user is logged in or not
