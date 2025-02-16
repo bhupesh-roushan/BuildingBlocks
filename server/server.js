@@ -18,10 +18,18 @@ import { studentCoursesRoutes } from "./routes/student-routes/student-courses-ro
 import { studentCourseProgressRoutes } from "./routes/student-routes/course-progress-routes.js";
 
 //middleware configuration
+
+
+const allowedOrigins = [
+  "https://building-blocks-sable.vercel.app",
+  "https://www.buildingblocks.cloud",
+];
+
+
 app.use(
   cors({
     // origin: process.env.CLIENT_URL,
-    origin: "https://building-blocks-sable.vercel.app",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
