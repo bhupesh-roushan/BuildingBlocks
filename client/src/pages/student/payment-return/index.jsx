@@ -64,7 +64,7 @@ function PaypalPaymentReturnPage() {
           </div>
         </CardTitle>
       </CardHeader>
-      <CardFooter className="flex items-center justify-center text-gray-600">
+      <CardFooter className="flex animate-pulse items-center justify-center text-gray-600">
         <img src={bbLogo} alt="404 Error" className="w-24 h-24" />
       </CardFooter>
     </Card>

@@ -91,13 +91,13 @@ function AuthPage() {
                 handleSubmit={handleRegisterUser}
               />
             )}
-            <p className="text-center text-sm mt-4">
+            <p className="text-center text-sm mt-4 ">
               {isSignIn
                 ? "Don't have an account? "
                 : "Already have an account? "}
               <button
                 onClick={() => setIsSignIn(!isSignIn)}
-                className=" hover:underline text-orange-500 font-semibold mt-5"
+                className=" cursor-pointer hover:underline text-orange-500 font-semibold mt-5"
               >
                 {isSignIn ? "Sign Up" : "Sign In"}
               </button>
