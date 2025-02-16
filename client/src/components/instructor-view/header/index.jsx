@@ -23,7 +23,7 @@ function InstructorHeader() {
         </Link>
       </div>
       <div>
-        <Link>
+        <Link to={"/instructor"}>
           <p className="text-sm hover:text-orange-600 hover:underline transition-all font-bold ease-in-out">
             Dashboard
           </p>
