@@ -132,7 +132,7 @@ function AuthPage() {
             <Link to="https://github.com/bhupesh-roushan" target="_blank">
               <LuLinkedin className="hover:scale-120 hover:text-blue-700 hover:opacity-100 transition-all w-3 md:w-5 opacity-70" />
             </Link>
-            <Link to="https://bhupeshroushan.vercel.app" target="_blank">
+            <Link to="https://www.bhupesh.website" target="_blank">
               <FaGlobe className="hover:scale-120 hover:text-orange-600 hover:opacity-100 transition-all w-3 md:w-4 opacity-70" />
             </Link>
           </div>
