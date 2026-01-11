@@ -119,7 +119,7 @@ function AuthPage() {
             />
           </div>
           <p className="text-xs text-center opacity-60 mt-2">
-            © Bhupesh Roushan 2025. All Rights Reserved @ BuildingBlocks
+            © Bhupesh Roushan 2026. All Rights Reserved @ BuildingBlocks
           </p>
 
           <div className="flex flex-row gap-2 mt-2 mb-5">
