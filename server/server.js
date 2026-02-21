@@ -22,7 +22,7 @@ import { studentCourseProgressRoutes } from "./routes/student-routes/course-prog
 
 const allowedOrigins = [
   "https://building-blocks-sable.vercel.app",
-  "https://www.buildingblocks.cloud",
+  "https://www.bblocks.cloud",
 ];
 
 
